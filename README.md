@@ -2,6 +2,9 @@
 
 Very simple module for translate your texts with custom params, cases and plurals.
 
+[![npm version](https://img.shields.io/npm/v/localizator.js.svg?style=flat-square)](https://www.npmjs.org/package/localizator.js)
+[![npm downloads](https://img.shields.io/npm/dm/localizator.js.svg?style=flat-square)](http://npm-stat.com/charts.html?package=localizator.js)
+
 ## Features
 
 - Simple, fast and small
@@ -88,6 +91,8 @@ locale:
   "some.key": "some $0"
 }
 ```
+
+javascript:
 
 ```js
 myLoc.t('some.key', 'some fallback', ['param']); // some param
