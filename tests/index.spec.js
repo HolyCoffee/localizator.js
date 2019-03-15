@@ -1,13 +1,13 @@
-const loc = require('../index');
-const locale = require('./locale');
-const { expect } = require('chai');
+import loc from './require';
+import ru from './locales/locale_ru';
+import en from './locales/locale_en';
+import { expect } from 'chai';
 
 describe('index.js', () => {
-  const test = new loc(locale, 'ru');
+  const test = new loc(ru);
 
   it('create localizator', () => {
-    expect(test.l).equal(locale);
-    expect(test.lng).equal('ru');
+    expect(test.l).equal(ru);
   });
 
   it('get translate by string key', () => {
@@ -40,5 +40,14 @@ describe('index.js', () => {
 
   it('get translate with plural (five items)', () => {
     expect(test.t('plural', null, [5], { subs: 5, add: 5 })).equal('5 подписчиков добавлены');
+  });
+
+  it('change locale', () => {
+    test.c(en);
+    expect(test.l).equal(en);
+  });
+
+  it('check language after locale changed', () => {
+    expect(test.t('test')).equal('test');
   });
 });

@@ -1,6 +1,6 @@
 {
   "name": "localizator.js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Very simple module for translate your texts with custom params, cases and plurals.",
   "keywords": [
     "localization",
@@ -14,10 +14,10 @@
     "email": "daniilsemail@gmail.com",
     "url": "https://github.com/HolyCoffee/localizator.js/issues"
   },
-  "main": "index.js",
+  "main": "./lib/index.js",
   "typings": "index.d.ts",
   "scripts": {
-    "test": "mocha tests"
+    "test": "mocha -r esm tests"
   },
   "author": {
     "name": "Daniil Fomin",
@@ -37,6 +37,7 @@
   },
   "devDependencies": {
     "chai": "^4.2.0",
-    "mocha": "^6.0.2"
+    "mocha": "^6.0.2",
+    "esm": "^3.2.18"
   }
 }
