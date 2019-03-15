@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   test: 'тест',
   params: 'тест с параметром - $0',
   some: {

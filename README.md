@@ -32,6 +32,14 @@ import loc from 'localizator.js';
 const myLoc = new loc(localeObject, currentLanguage);
 ```
 
+### Change locale
+
+javascript:
+
+```js
+myLoc.c(localeObject);
+```
+
 ### Get translate
 
 locale:
@@ -109,7 +117,7 @@ locale:
 ```
 
 ```js
-[varName, firstForm, secondForm, thirdForm]
+[varName, firstForm, secondForm, thirdForm];
 
 // varName - name of variable *surprised Nicolas Cage*
 

@@ -1,11 +1,15 @@
 declare class loc {
-  constructor(l: { [key: string]: string }, lng: string);
+  constructor(l: { [key: string]: string });
 
-  t(k: string, f?: string, p?: string[], pl?: { [key: string]: number }): string;
+  c(l: { [key: string]: string }): void;
 
-  arr(o: object, k: string[]): string;
+  t(k: string, f?: string | null, p?: string | number[], pl?: { [key: string]: number }): string;
 
-  plural(t: string, pl: { [key: string]: number }): string;
+  a(o: object, k: string[]): string;
 
-  replacer(v: string): number;
+  p(t: string, pl: { [key: string]: number }): string;
+
+  r(v: string): number;
 }
+
+export default loc;
