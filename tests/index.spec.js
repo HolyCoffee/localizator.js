@@ -29,4 +29,16 @@ describe('index.js', () => {
   it('get translate with params', () => {
     expect(test.t('params', null, ['some param'])).equal('тест с параметром - some param');
   });
+
+  it('get translate with plural (one item)', () => {
+    expect(test.t('plural', null, [1], { subs: 1, add: 1 })).equal('1 подписчик добавлен');
+  });
+
+  it('get translate with plural (two items)', () => {
+    expect(test.t('plural', null, [2], { subs: 2, add: 2 })).equal('2 подписчика добавлены');
+  });
+
+  it('get translate with plural (five items)', () => {
+    expect(test.t('plural', null, [5], { subs: 5, add: 5 })).equal('5 подписчиков добавлены');
+  });
 });

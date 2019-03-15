@@ -97,3 +97,45 @@ javascript:
 ```js
 myLoc.t('some.key', 'some fallback', ['param']); // some param
 ```
+
+### Get translate with plural form
+
+locale:
+
+```json
+{
+  "plural": "$0 [subs,subscriber,subscribers,subscribers]"
+}
+```
+
+```js
+[varName, firstForm, secondForm, thirdForm]
+
+// varName - name of variable *surprised Nicolas Cage*
+
+// firstForm - singular form (one apple - en, одно яблоко - ru)
+
+// secondForm - plural form, like two items (two apples - en, два яблока - ru)
+
+// thirdForm - plural form, like five items (five apples - en, пять яблок - ru)
+```
+
+#### One item
+
+javascript:
+
+```js
+myLoc.t('plural', 'some fallback', [1], { subs: 1 }); // 1 subscriber
+```
+
+#### Two items
+
+```js
+myLoc.t('plural', 'some fallback', [2], { subs: 2 }); // 2 subscribers
+```
+
+#### Five items
+
+```js
+myLoc.t('plural', 'some fallback', [5], { subs: 5 }); // 5 subscribers
+```
