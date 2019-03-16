@@ -147,3 +147,73 @@ myLoc.t('plural', 'some fallback', [2], { subs: 2 }); // 2 subscribers
 ```js
 myLoc.t('plural', 'some fallback', [5], { subs: 5 }); // 5 subscribers
 ```
+
+## Usage with React
+
+### Without context
+
+registration:
+
+```js
+import l from 'localizator.js';
+
+window.l = new l({ test: 'test' });
+```
+
+usage in jsx:
+
+```js
+render() {
+  return (
+    <div>
+      { window.l.t('test') }
+    </div>
+  )
+}
+```
+
+### With context
+
+registration:
+
+```js
+import l from 'localizator.js';
+
+export const SomeContext = React.createContext({
+  l: new l({ test: 'test' })
+});
+
+...
+
+render() {
+    return (
+      <div>
+        <SomeContext.Provider>
+          {this.props.children}
+        </SomeContext.Provider>
+      </div>
+    );
+  }
+```
+
+usage:
+
+```js
+import { SomeContext } from '../path/to/provider';
+
+...
+
+render() {
+    return (
+      <div>
+        <SomeContext.Consumer>
+          {({ l }) => (
+            <div>
+              {l.t('test')}
+            </div>
+          )}
+        </SomeContext.Consumer>
+      </div>
+    );
+  }
+```

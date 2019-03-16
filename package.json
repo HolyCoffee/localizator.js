@@ -1,6 +1,6 @@
 {
   "name": "localizator.js",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Very simple module for translate your texts with custom params, cases and plurals.",
   "keywords": [
     "localization",
