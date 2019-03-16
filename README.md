@@ -29,7 +29,7 @@ javascript:
 ```js
 import loc from 'localizator.js';
 
-const myLoc = new loc(localeObject, currentLanguage);
+const myLoc = new loc(localeObject);
 ```
 
 ### Change locale
