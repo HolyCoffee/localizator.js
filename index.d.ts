@@ -3,7 +3,7 @@ declare class loc {
 
   c(l: { [key: string]: string }): void;
 
-  t(k: string, f?: string | null, p?: string | number[], pl?: { [key: string]: number }): string;
+  t(k: string, f?: string | null, p?: Array<string | number>, pl?: { [key: string]: number }): string;
 
   a(o: object, k: string[]): string;
 
@@ -13,3 +13,9 @@ declare class loc {
 }
 
 export default loc;
+
+declare const vuel: {
+  install(Vue: any, options: { loc: loc; locale: { [key: string]: string } }): void;
+};
+
+export { vuel };

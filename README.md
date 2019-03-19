@@ -10,7 +10,14 @@ Very simple module for translate your texts with custom params, cases and plural
 - Simple, fast and small
 - Custom params for translate
 - Custom params for plural
-- Custom params fot cases
+
+## Menu
+
+- [Basic usage](#basic)
+- [Usage with params](#params)
+- [Usage with plural form](#plural)
+- [Usage in React](#react)
+- [Usage in vue](#vue)
 
 ## Installing
 
@@ -22,7 +29,7 @@ npm install localizator.js
 
 ## Usage
 
-### Register new localizator class
+### <a name="basic" id="basic"></a>Register new localizator class
 
 javascript:
 
@@ -90,7 +97,7 @@ javascript:
 myLoc.t('wrong.key', 'some fallback'); // some fallback
 ```
 
-### Get translate with params
+### <a name="params" id="params"></a>Get translate with params
 
 locale:
 
@@ -106,7 +113,7 @@ javascript:
 myLoc.t('some.key', 'some fallback', ['param']); // some param
 ```
 
-### Get translate with plural form
+### <a name="plural" id="plural"></a>Get translate with plural form
 
 locale:
 
@@ -148,7 +155,7 @@ myLoc.t('plural', 'some fallback', [2], { subs: 2 }); // 2 subscribers
 myLoc.t('plural', 'some fallback', [5], { subs: 5 }); // 5 subscribers
 ```
 
-## Usage with React
+## <a name="react" id="react"></a>Usage with React
 
 ### Without context
 
@@ -216,4 +223,66 @@ render() {
       </div>
     );
   }
+```
+
+## <a name="vue" id="vue"></a>Usage with Vue
+
+You must be use localizator.js as vue plugin
+
+registration:
+
+```js
+import loc, { vuel } from 'localizator.js';
+
+Vue.use(vuel, { loc, localeObject });
+```
+
+usage:
+
+```js
+<script>
+  export default {
+    ...
+    methods: {
+      translate() {
+        return this.$l('test')
+      }
+    }
+  }
+</script>
+
+<template>
+  <div>
+    {{ $l('test') }}
+  </div>
+</template>
+```
+
+change locale:
+
+```js
+<script>
+  export default {
+    ...
+    methods: {
+      changeLocale() {
+        this.$lc(localeObject)
+      }
+    }
+  }
+</script>
+```
+
+if you use typescript, you must be create `localizator.d.ts` file into `src` folder,
+and write into him:
+
+```ts
+import Vue from 'vue';
+
+declare module 'vue/types/vue' {
+  interface Vue {
+    $l: (k: string, f?: string, p?: Array<string | number>, pl?: { [key: string]: number }) => string;
+    $lc: (newLocale: { [key: string]: string }) => void;
+  }
+}
 ```
