@@ -15,7 +15,7 @@ declare class loc {
 export default loc;
 
 declare const vuel: {
-  install(Vue: any, options: { loc: loc; locale: { [key: string]: string } }): void;
+  install(V: any, o: { loc: loc; locale: { [key: string]: string } }): void;
 };
 
 export { vuel };

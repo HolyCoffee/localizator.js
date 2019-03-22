@@ -5,44 +5,28 @@ export default class loc {
     this.l = l;
   }
 
-  // change locale
-
   c(l) {
     this.l = l;
   }
 
-  // translate
-
   t(k, f = k, p, pl) {
     let t = Array.isArray(k) ? this.a(this.l, k) : this.l[k] || f;
-
-    p &&
-      p.length &&
-      p.forEach((item, index) => {
-        t = t.replace(new RegExp(`\\$${index}`, 'g'), item);
-      });
-
+    p && p.length && p.forEach((it, i) => (t = t.replace(new RegExp(`\\$${i}`, 'g'), it)));
     return pl ? this.p(t, pl) : t;
   }
-
-  // reduca array if translate key is array
 
   a(o, k) {
     return k.reduce((a, b) => a && a[b], o);
   }
 
-  // set plural form
-
   p(t, pl) {
-    t.split(' ').forEach(item => {
-      /\[([^,]+),([^,\d]+,)+([^,]+)\]/.test(item) &&
-        (t = t.replace(item, item.slice(1, -1).split(',')[this.r(pl[item.slice(1, -1).split(',')[0]])]));
+    t.split(' ').forEach(i => {
+      /\[([^,]+),([^,\d]+,)+([^,]+)\]/.test(i) &&
+        (t = t.replace(i, i.slice(1, -1).split(',')[this.r(pl[i.slice(1, -1).split(',')[0]])]));
     });
 
     return t;
   }
-
-  // replacer
 
   r(v) {
     return (Math.abs(v) % 100 >= 5 && Math.abs(v) % 100 <= 20) || Math.abs(v) % 100 === 0
@@ -54,10 +38,10 @@ export default class loc {
 }
 
 export const vuel = {
-  install: (Vue, options) => {
-    let l = Vue.observable(new options.loc(options.locale));
+  install: (V, o) => {
+    let l = V.observable(new o.loc(o.locale));
 
-    Vue.prototype.$l = (k, f = k, p, pl) => l.t(k, f, p, pl);
-    Vue.prototype.$lc = newLocale => l.c(newLocale);
+    V.prototype.$l = (...args) => l.t(...args);
+    V.prototype.$lc = nl => l.c(nl);
   }
 };
