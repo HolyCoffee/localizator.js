@@ -1,13 +1,15 @@
 {
   "name": "localizator.js",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Very simple module for translate your texts with custom params, cases and plurals.",
   "keywords": [
     "localization",
     "translation",
     "internationalization",
     "plural",
-    "case"
+    "vue",
+    "react",
+    "svelte"
   ],
   "homepage": "https://github.com/HolyCoffee/localizator.js",
   "bugs": {

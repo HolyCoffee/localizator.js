@@ -19,6 +19,7 @@ Very simple module for translate your texts with custom params, cases and plural
 - [Usage with plural form](#plural)
 - [Usage in React](#react)
 - [Usage in Vue](#vue)
+- [Usage in Svelte](#svelte)
 
 ## Installing
 
@@ -165,7 +166,7 @@ registration:
 ```js
 import l from 'localizator.js';
 
-window.l = new l({ test: 'test' });
+window.l = new l(localeObject);
 ```
 
 usage in jsx:
@@ -174,7 +175,7 @@ usage in jsx:
 render() {
   return (
     <div>
-      { window.l.t('test') }
+      { window.l.t(params) }
     </div>
   )
 }
@@ -188,7 +189,7 @@ registration:
 import l from 'localizator.js';
 
 export const SomeContext = React.createContext({
-  l: new l({ test: 'test' })
+  l: new l(localeObject)
 });
 
 ...
@@ -217,7 +218,7 @@ render() {
         <SomeContext.Consumer>
           {({ l }) => (
             <div>
-              {l.t('test')}
+              {l.t(params)}
             </div>
           )}
         </SomeContext.Consumer>
@@ -246,7 +247,7 @@ usage:
     ...
     methods: {
       translate() {
-        return this.$l('test')
+        return this.$l(params)
       }
     }
   }
@@ -254,7 +255,7 @@ usage:
 
 <template>
   <div>
-    {{ $l('test') }}
+    {{ $l(params) }}
   </div>
 </template>
 ```
@@ -286,4 +287,45 @@ declare module 'vue/types/vue' {
     $lc: (newLocale: { [key: string]: string }) => void;
   }
 }
+```
+
+## <a name="svelte" id="svelte"></a>Usage with Svelte
+
+registration:
+
+```js
+// main.js
+import App from './App.svelte';
+import { Store } from 'svelte/store.js';
+import loc from 'localizator.js';
+const l = new loc({ test: 'test' });
+new App({
+  target: document.body,
+  store: new Store({
+    l
+  })
+});
+```
+
+usage in components:
+
+```html
+<div>
+  { $l.t(params) } // translate
+
+  <button on:click="someMethod(localeObject)">change locale</button>
+</div>
+
+<script>
+export default {
+  ...
+  methods: {
+    someMethod(localeObject) { // change locale
+      const { l } = this.store.get();
+      l.c(localeObject);
+      this.store.set({ l });
+    }
+  }
+}
+</script>
 ```
