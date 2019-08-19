@@ -47,7 +47,7 @@ export const vuel = {
   install: (V, o) => {
     let l = V.observable(new o.loc(o.locale));
 
-    V.prototype.$l = (...args) => l.t(...args);
-    V.prototype.$lc = nl => l.c(nl);
+    V.prototype.$t = (...args) => l.t(...args);
+    V.prototype.$cl = nl => l.c(nl);
   }
 };

@@ -265,7 +265,7 @@ usage:
     ...
     methods: {
       translate() {
-        return this.$l(params)
+        return this.$t(params)
       }
     }
   }
@@ -273,7 +273,7 @@ usage:
 
 <template>
   <div>
-    {{ $l(params) }}
+    {{ $t(params) }}
   </div>
 </template>
 ```
@@ -286,7 +286,7 @@ change locale:
     ...
     methods: {
       changeLocale() {
-        this.$lc(localeObject)
+        this.$cl(localeObject)
       }
     }
   }
@@ -301,8 +301,13 @@ import Vue from 'vue';
 
 declare module 'vue/types/vue' {
   interface Vue {
-    $l: (k: string, f?: string, p?: Array<string | number>, pl?: { [key: string]: number }) => string;
-    $lc: (newLocale: { [key: string]: string }) => void;
+    $t: (
+      k: string,
+      f?: string,
+      p?: Array<string | number> | { [key: string]: string },
+      pl?: { [key: string]: number }
+    ) => string;
+    $cl: (newLocale: { [key: string]: string }) => void;
   }
 }
 ```
@@ -329,21 +334,21 @@ usage in components:
 
 ```html
 <div>
-  { $l.t(params) } // translate
+  { $t.t(params) } // translate
 
   <button on:click="someMethod(localeObject)">change locale</button>
 </div>
 
 <script>
-export default {
-  ...
-  methods: {
-    someMethod(localeObject) { // change locale
-      const { l } = this.store.get();
-      l.c(localeObject);
-      this.store.set({ l });
+  export default {
+    ...
+    methods: {
+      someMethod(localeObject) { // change locale
+        const { l } = this.store.get();
+        l.c(localeObject);
+        this.store.set({ l });
+      }
     }
   }
-}
 </script>
 ```

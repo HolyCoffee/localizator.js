@@ -3,7 +3,7 @@ declare class loc {
 
   c(l: { [key: string]: string }): void;
 
-  t(k: string, f?: string | null, p?: Array<string | number>, pl?: { [key: string]: number }): string;
+  t(k: string, f?: string | null, p?: Array<string | number> | { [key: string]: string }, pl?: { [key: string]: number }): string;
 
   a(o: object, k: string[]): string;
 
