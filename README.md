@@ -101,6 +101,8 @@ myLoc.t('wrong.key', 'some fallback'); // some fallback
 
 ### <a name="params" id="params"></a>Get translate with params
 
+#### Params in array:
+
 locale:
 
 ```json
@@ -113,6 +115,22 @@ javascript:
 
 ```js
 myLoc.t('some.key', 'some fallback', ['param']); // some param
+```
+
+#### Params in object
+
+locale:
+
+```json
+{
+  "some.key": "some {test}"
+}
+```
+
+javascript:
+
+```js
+myLoc.t('some.key', 'some fallback', { test: 'param' }); // some param
 ```
 
 ### <a name="plural" id="plural"></a>Get translate with plural form

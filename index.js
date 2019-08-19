@@ -11,7 +11,13 @@ export default class loc {
 
   t(k, f = k, p, pl) {
     let t = Array.isArray(k) ? this.a(this.l, k) : this.l[k] || f;
-    p && p.length && p.forEach((it, i) => (t = t.replace(new RegExp(`\\$${i}`, 'g'), it)));
+    if (p && Array.isArray(p) && p.length) {
+      p.forEach((it, i) => (t = t.replace(new RegExp(`\\$${i}`, 'g'), it)));
+    } else {
+      for (let i in p) {
+        t = t.replace(new RegExp(`\\{${i}}`, 'g'), p[i]);
+      }
+    }
     return pl ? this.p(t, pl) : t;
   }
 
