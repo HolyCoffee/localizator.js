@@ -3,7 +3,7 @@
 Very simple module for translate your texts with custom params, cases and plurals.
 
 [![npm version](https://img.shields.io/npm/v/localizator.js.svg?style=flat-square)](https://www.npmjs.org/package/localizator.js)
-[![install size](https://packagephobia.now.sh/badge?p=localizator.js)](https://packagephobia.now.sh/result?p=localizator.js)
+[![install size](https://packagephobia.now.sh/badge?p=localizator.js@0.1.3)](https://packagephobia.now.sh/result?p=localizator.js@0.1.3)
 [![npm downloads](https://img.shields.io/npm/dm/localizator.js.svg?style=flat-square)](http://npm-stat.com/charts.html?package=localizator.js)
 
 ## Features
